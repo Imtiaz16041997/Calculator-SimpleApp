@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+
 public class MainActivity extends AppCompatActivity {
 
     Button btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn0,btnDot,btnPlus,btnMinus,btnDivide,btnMulti,btnAC,btnDel,btnEquals;
@@ -16,6 +18,11 @@ public class MainActivity extends AppCompatActivity {
 
     double firstNumber = 0;
     double lastNumber = 0;
+
+    String status = null;
+    boolean operator = false;
+
+    DecimalFormat format = new DecimalFormat("######.######");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -146,6 +153,27 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                if(operator){
+                    if(status == "multiplication"){
+                        multiply();
+                    }
+                    else if(status == "division") {
+                            divide();
+                    }
+                    else if(status == "subtraction") {
+                        minus();
+                    }
+
+                    else{
+                        plus();
+                    }
+
+                }
+
+                status = "sum";
+                operator = false;
+                number = null;
+
             }
         });
 
@@ -154,12 +182,54 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                if(operator){
+                    if(status == "multiplication"){
+                        multiply();
+                    }
+                    else if(status == "division") {
+                        divide();
+                    }
+                    else if(status == "sum") {
+                        plus();
+                    }
+
+                    else{
+                        minus();
+                    }
+
+                }
+
+                status = "sum";
+                operator = false;
+                number = null;
+
             }
         });
 
         btnMulti.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+
+                if(operator){
+                    if(status == "subtraction"){
+                        minus();
+                    }
+                    else if(status == "division") {
+                        divide();
+                    }
+                    else if(status == "sum") {
+                        plus();
+                    }
+
+                    else{
+                        multiply();
+                    }
+
+                }
+
+                status = "multiplication";
+                operator = false;
+                number = null;
 
             }
         });
@@ -168,12 +238,61 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                if(operator){
+                    if(status == "subtraction"){
+                        minus();
+                    }
+                    else if(status == "multiplication") {
+                        multiply();
+                    }
+                    else if(status == "sum") {
+                        plus();
+                    }
+
+                    else{
+                        divide();
+                    }
+
+                }
+
+                status = "division";
+                operator = false;
+                number = null;
+
+
             }
         });
 
         btnEquals.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+
+                if(operator)
+                {
+                    if(status=="sum")
+                    {
+                        plus();
+                    }
+                    else if(status=="subtraction")
+                    {
+                        minus();
+                    }
+                    else if(status=="multiplication")
+                    {
+                        multiply();
+                    }
+                    else if(status=="division")
+                    {
+                        divide();
+                    }
+                    else
+                    {
+                        firstNumber = Double.parseDouble(textViewResult.getText().toString());
+                    }
+
+                }
+
+                operator = false;
 
             }
         });
@@ -186,7 +305,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        
+
 
 
     }
@@ -203,6 +322,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         textViewResult.setText(number);
+        operator = true;
 
     }
 
@@ -211,7 +331,7 @@ public class MainActivity extends AppCompatActivity {
         lastNumber = Double.parseDouble(textViewResult.getText().toString());
         firstNumber = firstNumber + lastNumber;
 
-        textViewResult.setText(""+firstNumber);
+        textViewResult.setText(format.format(firstNumber));
 
     }
 
@@ -228,7 +348,7 @@ public class MainActivity extends AppCompatActivity {
             firstNumber = firstNumber - lastNumber;
 
         }
-        textViewResult.setText(""+firstNumber);
+        textViewResult.setText(format.format(firstNumber));
 
     }
 
@@ -249,7 +369,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         }
-        textViewResult.setText(""+firstNumber);
+        textViewResult.setText(format.format(firstNumber));
 
     }
 
@@ -270,7 +390,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         }
-        textViewResult.setText(""+firstNumber);
+        textViewResult.setText(format.format(firstNumber));
 
     }
 
