@@ -21,4 +21,6 @@
     <color name="Purple">#800080</color>
     <color name="white">#FFFFFFFF</color>
     <color name="nw">#292E49</color>
+    <color name="neon">#1C444D</color>
+    <color name="nron2">#01A7A6</color>
 </resources>
