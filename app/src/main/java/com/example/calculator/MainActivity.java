@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     Button btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn0,btnDot,btnPlus,btnMinus,btnDivide,btnMulti,btnAC,btnDel,btnEquals;
     TextView textViewHistory,textViewResult;
 
-    private String number = null;
+    private String number;
 
     double firstNumber = 0;
     double lastNumber = 0;
@@ -197,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
 
                 history = textViewHistory.getText().toString();
                 currentResult = textViewResult.getText().toString();
-                textViewHistory.setText(history+currentResult+"+");
+                textViewHistory.setText(currentResult+"+");
 
                 if(operator)
                 {
@@ -230,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 history = textViewHistory.getText().toString();
                 currentResult = textViewResult.getText().toString();
-                textViewHistory.setText(history+currentResult+"-");
+                textViewHistory.setText(currentResult+"-");
 
                 if(operator){
                     if(status == "multiplication"){
@@ -262,7 +262,7 @@ public class MainActivity extends AppCompatActivity {
 
                 history = textViewHistory.getText().toString();
                 currentResult = textViewResult.getText().toString();
-                textViewHistory.setText(history+currentResult+"*");
+                textViewHistory.setText(currentResult+"*");
 
                 if(operator){
                     if(status == "subtraction"){
@@ -294,7 +294,7 @@ public class MainActivity extends AppCompatActivity {
 
                 history = textViewHistory.getText().toString();
                 currentResult = textViewResult.getText().toString();
-                textViewHistory.setText(history+currentResult+"/");
+                textViewHistory.setText(currentResult+"/");
 
                 if(operator){
                     if(status == "subtraction"){
@@ -389,6 +389,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(number == null )
         {
+
             number = view;
         }
         else if(btnEqualsControl)
