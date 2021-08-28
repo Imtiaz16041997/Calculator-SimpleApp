@@ -13,6 +13,7 @@ import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Scriptable;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -20,12 +21,15 @@ import javax.script.ScriptException;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn0,btnDot,btnPlus,btnMinus,btnDivide,btnMulti,btnAC,btnDel,btnEquals,btnModule;
+    Button btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn0,btnDot,
+            btnPlus,btnMinus,btnDivide,btnMulti,
+            btnAC,btnDel,btnEquals,btnModule,btnPower,btnbracket;
     TextView inputtext,outputtext;
 
-    private String data;
-
-
+    private String workings ;
+    boolean leftBracket = true;
+    String formula = "";
+    String tempFormula = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
         btnDel = findViewById(R.id.btnDel);
         btnEquals = findViewById(R.id.btnEquals);
         btnModule = findViewById(R.id.btnModule);
+        btnPower = findViewById(R.id.btnPower);
+        btnbracket = findViewById(R.id.btnbracket);
 
 
         //Answer and Question Screen TextView
@@ -69,8 +75,8 @@ public class MainActivity extends AppCompatActivity {
         btn0.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-               data = inputtext.getText().toString();
-               inputtext.setText(data +"0");
+                workings  = inputtext.getText().toString();
+               inputtext.setText(workings  +"0");
 
             }
         });
@@ -78,16 +84,16 @@ public class MainActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                data = inputtext.getText().toString();
-                inputtext.setText(data +"1");
+                workings  = inputtext.getText().toString();
+                inputtext.setText(workings  +"1");
             }
         });
 
         btn2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                data = inputtext.getText().toString();
-                inputtext.setText(data +"2");
+                workings  = inputtext.getText().toString();
+                inputtext.setText(workings  +"2");
             }
         });
 
@@ -95,16 +101,16 @@ public class MainActivity extends AppCompatActivity {
         btn3.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                data = inputtext.getText().toString();
-                inputtext.setText(data +"3");
+                workings  = inputtext.getText().toString();
+                inputtext.setText(workings  +"3");
             }
         });
 
         btn4.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                data = inputtext.getText().toString();
-                inputtext.setText(data +"4");
+                workings  = inputtext.getText().toString();
+                inputtext.setText(workings  +"4");
             }
         });
 
@@ -112,48 +118,48 @@ public class MainActivity extends AppCompatActivity {
         btn5.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                data = inputtext.getText().toString();
-                inputtext.setText(data +"5");
+                workings  = inputtext.getText().toString();
+                inputtext.setText(workings  +"5");
             }
         });
 
         btn6.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                data = inputtext.getText().toString();
-                inputtext.setText(data +"6");
+                workings  = inputtext.getText().toString();
+                inputtext.setText(workings  +"6");
             }
         });
 
         btn7.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                data = inputtext.getText().toString();
-                inputtext.setText(data +"7");
+                workings  = inputtext.getText().toString();
+                inputtext.setText(workings  +"7");
             }
         });
 
         btn8.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                data = inputtext.getText().toString();
-                inputtext.setText(data +"8");
+                workings  = inputtext.getText().toString();
+                inputtext.setText(workings  +"8");
             }
         });
 
         btn9.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                data = inputtext.getText().toString();
-                inputtext.setText(data +"9");
+                workings  = inputtext.getText().toString();
+                inputtext.setText(workings  +"9");
             }
         });
 
         btnDot.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                data = inputtext.getText().toString();
-                inputtext.setText(data +".");
+                workings  = inputtext.getText().toString();
+                inputtext.setText(workings  +".");
             }
         });
 
@@ -163,6 +169,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 inputtext.setText("");
                 outputtext.setText("");
+                leftBracket = true;
+                workings="";
+                btnDel.setClickable(true);
 
             }
         });
@@ -170,18 +179,24 @@ public class MainActivity extends AppCompatActivity {
         btnDel.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                inputtext.setText("");
-                outputtext.setText("");
+                workings  = inputtext.getText().toString();
+                workings = workings.substring(0,workings.length()-1);
+                if(workings.length()==0)
+                {
+                    btnDel.setClickable(false);
+                }
+                inputtext.setText(workings);
 
             }
+
         });
 
 
         btnPlus.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                data = inputtext.getText().toString();
-                inputtext.setText(data +"+");
+                workings  = inputtext.getText().toString();
+                inputtext.setText(workings  +"+");
 
             }
         });
@@ -190,8 +205,8 @@ public class MainActivity extends AppCompatActivity {
         btnMinus.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                data = inputtext.getText().toString();
-                inputtext.setText(data +"-");
+                workings  = inputtext.getText().toString();
+                inputtext.setText(workings  +"-");
 
             }
         });
@@ -199,8 +214,8 @@ public class MainActivity extends AppCompatActivity {
         btnMulti.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                data = inputtext.getText().toString();
-                inputtext.setText(data +"x");
+                workings  = inputtext.getText().toString();
+                inputtext.setText(workings  +"x");
 
             }
         });
@@ -208,8 +223,8 @@ public class MainActivity extends AppCompatActivity {
         btnDivide.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                data = inputtext.getText().toString();
-                inputtext.setText(data +"÷");
+                workings  = inputtext.getText().toString();
+                inputtext.setText(workings  +"÷");
 
             }
         });
@@ -219,8 +234,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                data = inputtext.getText().toString();
-                inputtext.setText(data + "%");
+                workings  = inputtext.getText().toString();
+                inputtext.setText(workings  + "%");
 
             }
         });
@@ -228,34 +243,21 @@ public class MainActivity extends AppCompatActivity {
         btnEquals.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                data = inputtext.getText().toString();
+                workings  = inputtext.getText().toString();
 //                Toast.makeText(MainActivity.this,""+data,Toast.LENGTH_LONG).show();
 //                Log.d("@","onClick: "+data);
 
-                data=data.replaceFirst("x","*");
-                data=data.replaceFirst("%","/100");
-                data=data.replaceFirst("÷","/");
-
-//                Context rhino = Context.enter();
-//                //when you set the optimization level to -1,
-//                // then you switch Rhino into interpreted mode,
-//                // which means that it goes down a different path for
-//                // executing the code than it does in compiled mode.
-//                rhino.setOptimizationLevel(-1);
-//
-//                String finalResult = "";
-//
-//                Scriptable scriptable = rhino.initStandardObjects();
-//                finalResult=rhino.evaluateString(scriptable,data,"Javascript",1,null).toString();
-//
-//                outputtext.setText(finalResult);
+                workings =workings .replaceFirst("x","*");
+                workings =workings .replaceFirst("%","/100");
+                workings =workings .replaceFirst("÷","/");
 
                 Double result = null;
 
                 ScriptEngine engine = new ScriptEngineManager().getEngineByName("rhino");
+                checkForPowerOf();
 
                 try {
-                    result = (double)engine.eval(data);
+                    result = (double)engine.eval(formula);
 
                 }
                 catch (ScriptException e){
@@ -268,7 +270,36 @@ public class MainActivity extends AppCompatActivity {
                     outputtext.setText(String.valueOf(result.doubleValue()));
 
 
+            }
+        });
 
+
+        btnbracket.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+
+               if(leftBracket){
+                   workings  = inputtext.getText().toString();
+                   inputtext.setText(workings  + "(");
+                   leftBracket = false;
+               }else
+               {
+                   workings  = inputtext.getText().toString();
+                   inputtext.setText(workings  + ")");
+                   leftBracket = true;
+               }
+
+
+
+            }
+        });
+
+        btnPower.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+
+                workings  = inputtext.getText().toString();
+                inputtext.setText(workings  + "^");
 
 
             }
@@ -276,15 +307,66 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
 
+    private void checkForPowerOf()
+    {
+        ArrayList<Integer> indexOfPowers = new ArrayList<>();
+        for(int i=0; i<workings.length(); i++)
+        {
+            if(workings.charAt(i) == '^')
+                indexOfPowers.add(i);
+        }
+        
+        formula =workings;
+        tempFormula = workings;
+        
+        for(Integer index: indexOfPowers)
+        {
+            changeFormula(index);
+        }
 
-
+        formula = tempFormula;
+        
 
     }
 
+    private void changeFormula(Integer index)
+    {
+        String numberLeft = "";
+        String numberRight = "";
+
+        for(int i = index + 1; i< workings.length(); i++)
+        {
+            if(isNumeric(workings.charAt(i)))
+                numberRight = numberRight + workings.charAt(i);
+            else
+                break;
+        }
+
+        for(int i = index - 1; i >= 0; i--)
+        {
+            if(isNumeric(workings.charAt(i)))
+                numberLeft = numberLeft + workings.charAt(i);
+            else
+                break;
+        }
+
+        String original = numberLeft + "^" + numberRight;
+        String changed = "Math.pow("+numberLeft+","+numberRight+")";
+        tempFormula = tempFormula.replace(original,changed);
+
+    }
+
+    private boolean isNumeric(char c)
+
+    {
+        if((c <= '9' && c >= '0') || c == '.')
+            return true;
+
+        return false;
 
 
-
-
+    }
 
 }

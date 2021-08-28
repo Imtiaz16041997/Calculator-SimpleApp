@@ -17,7 +17,7 @@
         <TextView
             android:id="@+id/inputtext"
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="110dp"
             android:gravity="center|end"
             android:background="@color/nw"
             android:textColor="@color/white"
@@ -26,7 +26,7 @@
         <TextView
             android:id="@+id/outputtext"
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="110dp"
             android:gravity="center|end"
             android:background="@color/nw"
             android:textSize="60sp"
@@ -38,7 +38,7 @@
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:rowCount="5"
+        app:rowCount="6"
         app:columnCount="4"
         >
 
@@ -374,6 +374,42 @@
             android:layout_row="4"
             android:layout_column="2"
             android:layout_columnWeight="1"
+
+            />
+
+        //Row 5
+
+        <Button
+            android:id="@+id/btnbracket"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="()"
+            android:textSize="30sp"
+            android:textColorHint="@color/nw"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/nw"
+            android:textStyle="bold"
+            android:layout_row="5"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+
+
+            />
+
+        <Button
+            android:id="@+id/btnPower"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="^"
+            android:textSize="30sp"
+            android:textColorHint="@color/nw"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/nw"
+            android:textStyle="bold"
+            android:layout_row="5"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+
 
             />
 
