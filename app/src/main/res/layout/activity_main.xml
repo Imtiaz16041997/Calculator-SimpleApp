@@ -15,7 +15,7 @@
 
 
         <TextView
-            android:id="@+id/textViewHistory"
+            android:id="@+id/inputtext"
             android:layout_width="match_parent"
             android:layout_height="140dp"
             android:gravity="center|end"
@@ -24,13 +24,12 @@
             android:textSize="40sp"/>
 
         <TextView
-            android:id="@+id/textViewResult"
+            android:id="@+id/outputtext"
             android:layout_width="match_parent"
             android:layout_height="140dp"
             android:gravity="center|end"
             android:background="@color/nw"
             android:textSize="60sp"
-            android:text="0"
             android:textColor="@color/white"
             />
 
@@ -359,8 +358,22 @@
             android:layout_row="4"
             android:layout_column="1"
             android:layout_columnWeight="1"
-            android:layout_columnSpan="2"
 
+            />
+
+        <Button
+            android:id="@+id/btnModule"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="%"
+            android:textSize="30sp"
+            android:textColorHint="@color/nw"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/nw"
+            android:textStyle="bold"
+            android:layout_row="4"
+            android:layout_column="2"
+            android:layout_columnWeight="1"
 
             />
 
