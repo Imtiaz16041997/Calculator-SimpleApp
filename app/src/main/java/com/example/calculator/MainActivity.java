@@ -26,10 +26,11 @@ public class MainActivity extends AppCompatActivity {
             btnAC,btnDel,btnEquals,btnModule,btnPower,btnbracket;
     TextView inputtext,outputtext;
 
-    private String workings ;
+    private String workings;
     boolean leftBracket = true;
     String formula = "";
     String tempFormula = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -160,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 workings  = inputtext.getText().toString();
                 inputtext.setText(workings  +".");
+
             }
         });
 
@@ -180,12 +182,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 workings  = inputtext.getText().toString();
-                workings = workings.substring(0,workings.length()-1);
-                if(workings.length()==0)
-                {
-                    btnDel.setClickable(false);
+
+                if(!workings.equals("")){
+                    workings = workings.substring(0,workings.length()-1);
+                    inputtext.setText(workings);
                 }
-                inputtext.setText(workings);
 
             }
 
