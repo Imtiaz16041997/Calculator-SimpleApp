@@ -23,13 +23,17 @@ public class MainActivity extends AppCompatActivity {
 
     Button btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn0,btnDot,
             btnPlus,btnMinus,btnDivide,btnMulti,
-            btnAC,btnDel,btnEquals,btnModule,btnPower,btnbracket;
+            btnAC,btnDel,btnEquals,btnModule,btnPower,btnbracket,btnPi;
     TextView inputtext,outputtext;
 
-    private String workings;
+    private String workings = null;
     boolean leftBracket = true;
     String formula = "";
     String tempFormula = "";
+    String pi = "3.14159265";
+
+    boolean dot = true;
+
 
 
     @Override
@@ -65,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         btnModule = findViewById(R.id.btnModule);
         btnPower = findViewById(R.id.btnPower);
         btnbracket = findViewById(R.id.btnbracket);
+        btnPi = findViewById(R.id.btnPi);
 
 
         //Answer and Question Screen TextView
@@ -156,15 +161,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnDot.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                workings  = inputtext.getText().toString();
-                inputtext.setText(workings  +".");
-
-            }
-        });
-
 
         btnAC.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -174,6 +170,7 @@ public class MainActivity extends AppCompatActivity {
                 leftBracket = true;
                 workings="";
                 btnDel.setClickable(true);
+                dot=true;
 
             }
         });
@@ -186,6 +183,7 @@ public class MainActivity extends AppCompatActivity {
                 if(!workings.equals("")){
                     workings = workings.substring(0,workings.length()-1);
                     inputtext.setText(workings);
+                    dot=true;
                 }
 
             }
@@ -198,6 +196,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 workings  = inputtext.getText().toString();
                 inputtext.setText(workings  +"+");
+                dot=true;
+
 
             }
         });
@@ -208,7 +208,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 workings  = inputtext.getText().toString();
                 inputtext.setText(workings  +"-");
-
+                dot=true;
             }
         });
 
@@ -217,7 +217,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 workings  = inputtext.getText().toString();
                 inputtext.setText(workings  +"x");
-
+                dot=true;
             }
         });
 
@@ -226,7 +226,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 workings  = inputtext.getText().toString();
                 inputtext.setText(workings  +"÷");
-
+                dot=true;
             }
         });
 
@@ -237,7 +237,7 @@ public class MainActivity extends AppCompatActivity {
 
                 workings  = inputtext.getText().toString();
                 inputtext.setText(workings  + "%");
-
+                dot=true;
             }
         });
 
@@ -252,6 +252,7 @@ public class MainActivity extends AppCompatActivity {
                 workings =workings .replaceFirst("%","/100");
                 workings =workings .replaceFirst("÷","/");
 
+
                 Double result = null;
 
                 ScriptEngine engine = new ScriptEngineManager().getEngineByName("rhino");
@@ -259,6 +260,7 @@ public class MainActivity extends AppCompatActivity {
 
                 try {
                     result = (double)engine.eval(formula);
+
 
                 }
                 catch (ScriptException e){
@@ -307,8 +309,58 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        btnPi.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+
+                workings  = inputtext.getText().toString();
+                inputtext.setText(workings  + "π");
+
+
+
+
+            }
+        });
+
+
+        btnDot.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+
+                    workings  = inputtext.getText().toString();
+//                    inputtext.setText(workings + ".");
+
+                if(dot)
+                {
+
+                    if(workings == null){
+                        workings = "0.";
+
+                    }
+
+                    else
+                    {
+                        workings = workings + ".";
+                    }
+
+
+
+                }
+
+                inputtext.setText(workings);
+                dot = false;
+
+
+            }
+        });
+
+
+
+
+
 
     }
+
 
     private void checkForPowerOf()
     {
@@ -362,8 +414,10 @@ public class MainActivity extends AppCompatActivity {
     private boolean isNumeric(char c)
 
     {
-        if((c <= '9' && c >= '0') || c == '.')
+        if((c <= '9' && c >= '0') || c == '.'){
+
             return true;
+        }
 
         return false;
 

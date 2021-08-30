@@ -56,7 +56,7 @@
             android:textColorHint="@color/nw"
             android:textColor="@color/white"
             android:backgroundTint="@color/neon"
-            android:textSize="25sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
 
@@ -68,8 +68,8 @@
             android:id="@+id/btnDel"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="DEL"
-            android:textSize="25sp"
+            android:text="C"
+            android:textSize="30sp"
             android:textColorHint="@color/nw"
             android:textColor="@color/white"
             android:backgroundTint="@color/neon"
@@ -317,7 +317,8 @@
             android:textSize="30sp"
             android:textColorHint="@color/nw"
             android:textColor="@color/white"
-            android:backgroundTint="@color/neon"            android:textStyle="bold"
+            android:backgroundTint="@color/neon"
+            android:textStyle="bold"
             android:layout_row="3"
             android:layout_column="3"
             android:layout_columnWeight="1"
@@ -362,11 +363,27 @@
 
             />
 
+<!--        <Button-->
+<!--            android:id="@+id/btnModule"-->
+<!--            android:layout_width="80dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="%"-->
+<!--            android:textSize="30sp"-->
+<!--            android:textColorHint="@color/nw"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:backgroundTint="@color/nw"-->
+<!--            android:textStyle="bold"-->
+<!--            android:layout_row="4"-->
+<!--            android:layout_column="2"-->
+<!--            android:layout_columnWeight="1"-->
+
+<!--            />-->
+
         <Button
-            android:id="@+id/btnModule"
+            android:id="@+id/btnPi"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="%"
+            android:text="π"
             android:textSize="30sp"
             android:textColorHint="@color/nw"
             android:textColor="@color/white"
@@ -411,8 +428,41 @@
             android:layout_column="1"
             android:layout_columnWeight="1"
 
-
             />
+
+<!--        <Button-->
+<!--            android:id="@+id/btnPi"-->
+<!--            android:layout_width="80dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="π"-->
+<!--            android:textSize="30sp"-->
+<!--            android:textColorHint="@color/nw"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:backgroundTint="@color/nw"-->
+<!--            android:textStyle="bold"-->
+<!--            android:layout_row="5"-->
+<!--            android:layout_column="2"-->
+<!--            android:layout_columnWeight="1"-->
+
+<!--            />-->
+
+                <Button
+                    android:id="@+id/btnModule"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="%"
+                    android:textSize="30sp"
+                    android:textColorHint="@color/nw"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/nw"
+                    android:textStyle="bold"
+                    android:layout_row="5"
+                    android:layout_column="2"
+                    android:layout_columnWeight="1"
+
+                    />
+
+
 
 
 
