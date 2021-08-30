@@ -23,4 +23,17 @@
     <color name="nw">#292E49</color>
     <color name="neon">#1C444D</color>
     <color name="nron2">#01A7A6</color>
+    <color name="darkgrey">#202020</color>
+    <color name="Magenta">#513044</color>
+    <color name="magenta2">#592E48</color>
+    <color name="magenta3">#672B4F</color>
+    <color name="magenta4">#6F2853</color>
+    <color name="magenta5">#702853</color>
+    <color name="magenta6">#84225D</color>
+    <color name="magenta7">#AA1870</color>
+    <color name="magenta8">#C3107B</color>
+    <color name="magenta9">#E3088B</color>
+
+
+
 </resources>
