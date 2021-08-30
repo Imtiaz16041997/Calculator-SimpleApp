@@ -82,7 +82,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 workings  = inputtext.getText().toString();
-               inputtext.setText(workings  +"0");
+
+                if(workings.length()!=0) {
+                    inputtext.setText(workings + "0");
+                }
 
             }
         });
@@ -180,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 workings  = inputtext.getText().toString();
 
-                if(!workings.equals("")){
+                if(workings.length()!=0){
                     workings = workings.substring(0,workings.length()-1);
                     inputtext.setText(workings);
                     dot=true;
@@ -251,6 +254,7 @@ public class MainActivity extends AppCompatActivity {
                 workings =workings .replaceFirst("x","*");
                 workings =workings .replaceFirst("%","/100");
                 workings =workings .replaceFirst("÷","/");
+                workings =workings .replaceFirst("pi","π");
 
 
                 Double result = null;
@@ -315,6 +319,7 @@ public class MainActivity extends AppCompatActivity {
 
                 workings  = inputtext.getText().toString();
                 inputtext.setText(workings  + "π");
+                outputtext.setText(pi+"");
 
 
 
