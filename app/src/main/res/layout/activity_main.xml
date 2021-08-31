@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
-        android:layout_weight="3"
+        android:layout_weight="2"
         >
 
         <TextView
@@ -49,7 +49,59 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
-        android:layout_weight="7" >
+        android:layout_weight="8" >
+
+         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+
+            <Button
+                android:id="@+id/btnsin"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="sin"
+                android:layout_weight="1"
+                android:textColorHint="@color/nw"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/magenta2"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:onClick="methodSin"
+                />
+            <Button
+                android:id="@+id/btntan"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="tan"
+                android:layout_weight="1"
+                android:textColorHint="@color/nw"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/magenta2"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:onClick="methodTan"
+
+                />
+
+            <Button
+                android:id="@+id/btncos"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="cos"
+                android:layout_weight="1"
+                android:textColorHint="@color/nw"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/magenta2"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:onClick="methodCos"
+
+                />
+
+
+</LinearLayout>
 
 
         <LinearLayout

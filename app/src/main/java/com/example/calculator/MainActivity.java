@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     boolean dot = true;
 
-
+    double num1,cosresult,sinresult,ans,tanresult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -429,4 +429,41 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    public void methodCos(View view) {
+
+        num1 = Double.parseDouble(inputtext.getText().toString());
+        workings = String.valueOf(num1);
+
+        cosresult   = Math.cos(Double.parseDouble(workings));
+        workings = Double.toString(cosresult);
+        outputtext.setText(workings);
+        cosresult = 0;
+
+    }
+
+    public void methodSin(View view) {
+
+        num1 = Double.parseDouble(inputtext.getText().toString());
+        workings = String.valueOf(num1);
+
+        sinresult   = Math.sin(Double.parseDouble(workings));
+        workings = Double.toString(sinresult);
+        outputtext.setText(workings);
+        sinresult = 0;
+
+
+    }
+
+    public void methodTan(View view) {
+
+        num1 = Double.parseDouble(inputtext.getText().toString());
+        workings = String.valueOf(num1);
+
+        tanresult   = Math.sin(Double.parseDouble(workings));
+        workings = Double.toString(tanresult);
+        outputtext.setText(workings);
+        tanresult = 0;
+
+    }
 }
